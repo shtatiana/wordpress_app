@@ -26,7 +26,7 @@ const app = express();
     .use(bodyParser.urlencoded({ extended: true }))
     .get("/wordpress/", async (req, resp) => {
         // Get content
-        const { content } = req.query.content;     
+        const content = req.query.content;     
         
         // Get token
         const getToken = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
