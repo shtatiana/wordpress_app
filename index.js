@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import path from "path";
 import https from 'https';
 import fetch from 'node-fetch';
-//import "isomorphic-fetch";
 
 
 const app = express();
@@ -25,9 +24,9 @@ const app = express();
             resp.sendFile(path.join(tempPath1, "/public/index.html"));
         })
     .use(bodyParser.urlencoded({ extended: true }))
-    .post("/wordpress/", async (req, resp) => {
+    .get("/wordpress/", async (req, resp) => {
         // Get content
-        const { content } = req.body;
+        const { content } = req.query.content;     
         
         // Get token
         const getToken = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
